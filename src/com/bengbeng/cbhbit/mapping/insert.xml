@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bengbeng.cbhbit.mapping.insert"> 
+    <insert id="addRemainders" parameterType="java.util.Map" statementType="STATEMENT">
+    	insert into ${remainders}(id,three,four,five) values(${id},${three},${four},${five})
+    </insert>
+    <insert id="addRemaindersFromRealnumber" parameterType="java.util.Map" statementType="STATEMENT">
+    	insert into ${remainders}(id,three,four,five) select id,three,four,five
+    	from ${realnumber},${real_to_percent}
+    	where ${realnumber}.realnumber=${real_to_percent}.number
+    	and ${realnumber}.id=${id}
+    </insert>
+    <insert id="addStatistics" parameterType="java.util.Map" statementType="STATEMENT">
+    	insert into ${statistics} (id) values(${id})
+    </insert>
+    <insert id="addWay" parameterType="java.util.Map" statementType="STATEMENT">
+    	insert into ${way} (id,way) select id,${columnName} AS way
+		from ${remainders},${real_to_percent} 
+		where ${remainders}.three=${real_to_percent}.three 
+		and ${remainders}.four=${real_to_percent}.four 
+		and ${remainders}.five=${real_to_percent}.five 
+		and id=${id}
+    </insert>
+    <insert id="insertRealnumber" parameterType="java.util.Map" statementType="STATEMENT">
+    	insert into ${realnumber}(id,realnumber,percent) values (${id},${num},${percent})
+    </insert>
+    <insert id="addRealnumber" parameterType="java.util.Map" statementType="STATEMENT">
+    	insert into ${realnumber}(id,realnumber,percent)
+		select ${remainders}.id as id,${real_to_percent}.number as realnumber,
+		${real_to_percent}.percent as percent from ${remainders},${real_to_percent}
+		where ${remainders}.three=${real_to_percent}.three AND
+		${remainders}.four=${real_to_percent}.four AND
+		${remainders}.five=${real_to_percent}.five 
+		and id=${id}
+    </insert>
+</mapper>

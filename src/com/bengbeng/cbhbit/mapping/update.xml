@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bengbeng.cbhbit.mapping.update"> 
+ 	<update id="updateway" parameterType="java.util.Map" statementType="STATEMENT">
+        update ${way} set same_count1=${same_count1},same_count2=${same_count2},
+        same_count3=${same_count3},same_count4=${same_count4},
+        same_count5=${same_count5},same_count6=${same_count6},
+        same_count7=${same_count7},same_count8=${same_count8},
+        same_count9=${same_count9},same_count10=${same_count10},
+        same_count11=${same_count11},same_count12=${same_count12} where id=${id}
+	</update>
+	<update id="updateMaxSameCount" parameterType="java.util.Map" statementType="STATEMENT">
+		update ${way_max_samecount} set ${same_count}=${max_same_count} where way_id=${way_id}
+	</update>
+</mapper>

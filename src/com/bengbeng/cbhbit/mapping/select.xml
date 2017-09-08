@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bengbeng.cbhbit.mapping.select"> 
+	<select id="getRemaindersFromId" parameterType="java.util.Map" 
+        resultType="com.bengbeng.cbhbit.domain.Remainders">
+        	select * from ${remainders} where id=${id}
+    </select>
+    <select id="getwayFromId" parameterType="java.util.Map"  
+		resultType="com.bengbeng.cbhbit.domain.Way" statementType="STATEMENT">
+        	select * from ${way} where id=${id}
+    </select> 
+    <select id="getMaxId" parameterType="java.util.Map" statementType="STATEMENT"
+    	resultType="com.bengbeng.cbhbit.domain.Remainders">
+        	select * from ${remainders} where id in(select max(id) from ${remainders})
+    </select>
+    <select id="getMaxIdFromRealnumber" parameterType="java.util.Map" statementType="STATEMENT"
+    	resultType="com.bengbeng.cbhbit.domain.Realnumber">
+        	select * from ${realnumber} where id in(select max(id) from ${realnumber})
+    </select>
+    <select id="getMaxRepeat" parameterType="java.util.Map" statementType="STATEMENT"  resultType="int">
+    	select max(${same_count}) from ${way}
+    </select>
+    <select id="getMaxSameCount" parameterType="java.util.Map" statementType="STATEMENT"  resultType="int">
+    	select ${same_count} from ${way_max_samecount} where way_id=${way_id}
+    </select>
+    <select id="getPercent" parameterType="java.util.Map" statementType="STATEMENT"  resultType="int">
+    	select percent from ${real_to_percent} where number=${number}
+    </select>
+    <select id="getWayMaxSameCount" parameterType="java.util.Map" statementType="STATEMENT"  resultType="int">
+    	SELECT MAX(${same_count}) FROM ${way}
+    </select>
+    <select id="selectRealnumberMaxId" parameterType="java.util.Map" resultType="int">
+    	SELECT MAX(id) FROM ${realnumber}
+    </select>
+    <select id="selectRemaindersMaxId" parameterType="java.util.Map" resultType="int">
+    	SELECT MAX(id) FROM ${remainders}
+    </select>
+    <select id="selectStatisticsMaxId" parameterType="java.util.Map" resultType="int">
+    	SELECT MAX(id) FROM ${statistics}
+    </select>
+    <select id="selectWayMaxId" parameterType="java.util.Map" resultType="int">
+    	SELECT MAX(id) FROM ${way}
+    </select>
+    <select id="selectRealNumberByID" parameterType="java.util.Map" resultType="int">
+    	select realnumber from ${realnumber} where id=${id}
+    </select>  
+    <select id="selectRealNumberTest" parameterType="java.util.Map" 
+    resultType="com.bengbeng.cbhbit.domain.Realnumber">
+    	SELECT * FROM ${realnumber} where id-4 in(
+SELECT id FROM ${realnumber} where realnumber=${a} AND
+id+1 in (
+SELECT id FROM ${realnumber} where realnumber=${b} AND
+id+1 in(
+SELECT id FROM ${realnumber} where realnumber=${c} AND
+id+1 in(
+SELECT id FROM ${realnumber} where realnumber=${d} )))) AND id&lt;=${id}
+    </select>
+    <select id="selectRealNumberTestThree" parameterType="java.util.Map" 
+    resultType="com.bengbeng.cbhbit.domain.Realnumber">
+    	SELECT * FROM ${realnumber} where id-3 in(
+SELECT id FROM ${realnumber} where realnumber=${a} AND
+id+1 in (
+SELECT id FROM ${realnumber} where realnumber=${b} AND
+id+1 in(
+SELECT id FROM ${realnumber} where realnumber=${c} ))) AND id&lt;=${id}
+    </select>
+    <select id="selectWayTestSix" parameterType="java.util.Map" 
+    resultType="com.bengbeng.cbhbit.domain.Way">
+    	SELECT * FROM ${way} where id-9 in(
+SELECT id FROM ${way} where way=${a} AND
+id+1 in (
+SELECT id FROM ${way} where way=${b} AND
+id+1 in(
+SELECT id FROM ${way} where way=${c} AND
+id+1 in(
+SELECT id FROM ${way} where way=${d} AND
+id+1 in(
+SELECT id FROM ${way} where way=${e} AND
+id+1 in(
+SELECT id FROM ${way} where way=${f} AND
+id+1 in(
+SELECT id FROM ${way} where way=${g} AND
+id+1 in(
+SELECT id FROM ${way} where way=${h} AND
+id+1 in(
+SELECT id FROM ${way} where way=${i} ))))))))) AND id&lt;${id}
+    </select>
+    <select id="selectWayTestNine" parameterType="java.util.Map" 
+    resultType="com.bengbeng.cbhbit.domain.Way">
+    	SELECT * FROM ${way} where id-9 in(
+SELECT id FROM ${way} where way=${a} AND
+id+1 in (
+SELECT id FROM ${way} where way=${b} AND
+id+1 in(
+SELECT id FROM ${way} where way=${c} AND
+id+1 in(
+SELECT id FROM ${way} where way=${d} AND
+id+1 in(
+SELECT id FROM ${way} where way=${e} AND
+id+1 in(
+SELECT id FROM ${way} where way=${f} AND
+id+1 in(
+SELECT id FROM ${way} where way=${g} AND
+id+1 in(
+SELECT id FROM ${way} where way=${h} AND
+id+1 in(
+SELECT id FROM ${way} where way=${i} ))))))))) ORDER BY id desc LIMIT 1
+    </select>
+</mapper>

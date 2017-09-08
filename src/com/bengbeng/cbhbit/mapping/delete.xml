@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bengbeng.cbhbit.mapping.delete">
+	<delete id="deleteremaindersmorethanid" parameterType="java.util.Map" statementType="STATEMENT">
+		delete from ${remainders} where id>=${id}
+	</delete>
+	<delete id="deleterealnumbermorethanid" parameterType="java.util.Map" statementType="STATEMENT">
+		delete from ${realnumber} where id>=${id}
+	</delete>
+	<delete id="deletestatisticsmorethanid" parameterType="java.util.Map" statementType="STATEMENT">
+		delete from ${statistics} where id>=${id}
+	</delete>
+	<delete id="deletewaymorethanid" parameterType="java.util.Map" statementType="STATEMENT">
+		delete from ${way} where id>=${id}
+	</delete>
+</mapper>
