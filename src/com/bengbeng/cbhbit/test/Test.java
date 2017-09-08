@@ -5,7 +5,7 @@ import com.bengbeng.cbhbit.dao.impl.SettingsDaoImpl;
 import com.bengbeng.cbhbit.domain.Settings;
 import com.bengbeng.cbhbit.service.Result;
 
-public class Test {
+public class Test {  
 
 	public static void main(String[] args) throws Throwable{
 		final Result re=new Result();
