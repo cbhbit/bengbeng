@@ -12,7 +12,7 @@ public class Test {
 		/**
 		for(int i=0;i<10;i++){
 			re.testThree(1,i);
-		} **/
+		}**/
 		//SettingsDaoImpl set_dao_impl=new SettingsDaoImpl();
 		//Settings set=set_dao_impl.doGetSettings(1);
 		//RemainderDaoImpl remainderdaoimpl=new RemainderDaoImpl();		
